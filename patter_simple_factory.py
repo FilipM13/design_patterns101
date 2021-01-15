@@ -1,8 +1,3 @@
-#klasa generalnego produktu -> klasy konkretnych produktów //odpowiada za to co tworzymy
-#class animal -> class dog(animal), class cat(animal) ...
-#klasa kreatora // odpowiada za sposób tworzenia obiektu dziedziczących po jednej klasie
-#class factory
-
 class Animal():
   '''
   General animal class.
