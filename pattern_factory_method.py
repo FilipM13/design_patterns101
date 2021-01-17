@@ -1,8 +1,10 @@
 '''
-Simple factory. Creator class returns different type of object depending on input.
-Using creator simplifies using of Animal subclasses. User doesn't know how 'animal' is created.
+Factory method. Specific Creator classes inherit from general Creator classes to maintain it's logic but return different type of object.
+In this case common lagic for different Creator classes is .speak() and .grow_furr().
+Every class can add it's own logic and returns different type of object.
 Returned objects must inherit from same base class (here: Dog, Cat, Worm and Hyena inherit from Animal class).
 '''
+
 class Animal():
   '''
   General animal class.
@@ -29,6 +31,7 @@ class Animal():
       print('Nice food.')
 
   def grow_furr(self):
+    print(self.__class__.__name__, 'has furr now.')
     self.weight += 0.5
 
   def __repr__(self):
@@ -53,6 +56,10 @@ class Dog(Animal):
 
   def speak(self):
     print('WOOF')
+
+  def grow_teeth(self):
+    print('Dog can bite now.')
+    self.can_bite = True
   
 class Cat(Animal):
   '''
@@ -74,6 +81,10 @@ class Cat(Animal):
     super().feed()
     print('*barf*')
     print('Give me more food.')
+
+  def grow_claw(self):
+    print('Cat can scratch now.')
+    self.can_scratch = True
 
 class Worm(Animal):
 
@@ -108,73 +119,86 @@ class Hyena(Animal):
   def speak(self):
     print('XDXDXDXDXD')
 
-class AnimalCreator():
+  def learn_hunting(self):
+    print('Hyena can hunt now.')
+    self.can_hunt = True
+
+
+class Creator():
   '''
-  Simple factory for creating Animals.
+  General creator class.
   '''
 
   @classmethod
-  def createDog(cls, breed, likes_cats, weight, hunger, mood):
-    '''
-    Method creating object inheriting from Animal class.
-    '''
-    print(f'Dog has been created and it speaks!')
-    rv = Dog(breed, likes_cats, weight, hunger, mood)
+  def create(cls, rv):
     rv.grow_furr()
     rv.speak()
-    return rv
+    pass
+
+class DogCreator(Creator):
+  '''
+  Dog creator class.
+  '''
 
   @classmethod
-  def createCat(cls, breed, likes_dogss, weight, hunger, mood):
-    '''
-    Method creating object inheriting from Animal class.
-    '''
-    print(f'Cat has been created and it speaks!')
-    rv = Cat(breed, likes_dogss, weight, hunger, mood)
-    rv.grow_furr()
-    rv.speak()
+  def create(cls):
+    rv = Dog('labrador', likes_cats=True, weight=25, hunger=8, mood=0.9)
+    print('Dog created.')
+    rv.grow_teeth()
+    rv.feed()
+    super().create(rv)
     return rv
+
+class CatCreator(Creator):
+  '''
+  Cat creator class.
+  '''
 
   @classmethod
-  def createHyena(cls, weight, hunger, mood):
-    '''
-    Method creating object inheriting from Animal class.
-    '''
-    print(f'Hyena has been created and it speaks!')
-    rv = Hyena(weight, hunger, mood)
-    rv.grow_furr()
-    rv.speak()
+  def create(cls):
+    rv = Cat('persian', likes_dogs=False, weight=5, hunger=5, mood=0.5)
+    print('Cat created.')
+    rv.grow_claw()
+    rv.feed()
+    super().create(rv)
     return rv
+
+class WormCreator(Creator):
+  '''
+  Cat creator class.
+  '''
 
   @classmethod
-  def createWorm(cls, food, weight, hunger, mood):
-    '''
-    Method creating object inheriting from Animal class.
-    '''
-    print(f'Worm has been created and it speaks!')
-    rv = Worm(food, weight, hunger, mood)
-    rv.grow_furr()
-    rv.speak()
+  def create(cls):
+    rv = Worm('leafs', weight=0.1, hunger=5, mood=0.5)
+    print('Worm created.')
+    rv.feed('leafs')
+    super().create(rv)
     return rv
 
+class HyenaCreator(Creator):
+  '''
+  Cat creator class.
+  '''
 
-'''uncomment for demonstration
+  @classmethod
+  def create(cls):
+    rv = Hyena(weight=35, hunger=7, mood=0.4)
+    print('Hyena created.')
+    rv.feed()
+    rv.learn_hunting()
+    super().create(rv)
+    return rv
 
-doge = AnimalCreator.createDog('retriever', True, 25, 5, 0.9)
-cate = AnimalCreator.createCat('persian', False, 4, 1, 0.2)
-jelly = AnimalCreator.createWorm('leafs', 0.1, 1, 'None')
-bob = AnimalCreator.createHyena(4, 5, 5)
+'''#uncomment for demonstration
+
+doge = DogCreator.create()
+print()
+cate = CatCreator.create()
+print()
+joe = WormCreator.create()
+print()
+bob = HyenaCreator.create()
 
 print(bob)
-
-breeds = ['retriever', 'doberman', 'pug']
-likes_cats = [True, True, False]
-weights = [25, 30, 8]
-hungers = [8, 5, 5]
-moods = [0.9, 0.5, 0.6]
-
-dogs = list(map(AnimalCreator.createDog, breeds, likes_cats, weights, hungers, moods))
-
-for dog in dogs: print(dog)
-
 '''

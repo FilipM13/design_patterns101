@@ -114,67 +114,31 @@ class AnimalCreator():
   '''
 
   @classmethod
-  def createDog(cls, breed, likes_cats, weight, hunger, mood):
-    '''
-    Method creating object inheriting from Animal class.
-    '''
-    print(f'Dog has been created and it speaks!')
-    rv = Dog(breed, likes_cats, weight, hunger, mood)
+  def create_animal(cls, a_type):
+    
+    if a_type == 'dog':
+      rv = Dog(breed='retriever', likes_cats=False, weight=25, hunger=8, mood=0.9)
+    elif a_type == 'cat':
+      rv = Cat('persian', likes_dogs=False, weight=3, hunger=5, mood=0.5)
+    elif a_type == 'worm':
+      rv = Worm(food='leafs', weight=0.1, hunger=5, mood=5)
+    elif a_type == 'hyena':
+      rv = Hyena(weight=35, hunger=7, mood=5)
+    
     rv.grow_furr()
     rv.speak()
     return rv
 
-  @classmethod
-  def createCat(cls, breed, likes_dogss, weight, hunger, mood):
-    '''
-    Method creating object inheriting from Animal class.
-    '''
-    print(f'Cat has been created and it speaks!')
-    rv = Cat(breed, likes_dogss, weight, hunger, mood)
-    rv.grow_furr()
-    rv.speak()
-    return rv
+'''#uncomment for demonstration
 
-  @classmethod
-  def createHyena(cls, weight, hunger, mood):
-    '''
-    Method creating object inheriting from Animal class.
-    '''
-    print(f'Hyena has been created and it speaks!')
-    rv = Hyena(weight, hunger, mood)
-    rv.grow_furr()
-    rv.speak()
-    return rv
-
-  @classmethod
-  def createWorm(cls, food, weight, hunger, mood):
-    '''
-    Method creating object inheriting from Animal class.
-    '''
-    print(f'Worm has been created and it speaks!')
-    rv = Worm(food, weight, hunger, mood)
-    rv.grow_furr()
-    rv.speak()
-    return rv
-
-
-'''uncomment for demonstration
-
-doge = AnimalCreator.createDog('retriever', True, 25, 5, 0.9)
-cate = AnimalCreator.createCat('persian', False, 4, 1, 0.2)
-jelly = AnimalCreator.createWorm('leafs', 0.1, 1, 'None')
-bob = AnimalCreator.createHyena(4, 5, 5)
+doge = AnimalCreator.create_animal('dog')
+catee = AnimalCreator.create_animal('cat')
+joe = AnimalCreator.create_animal('worm')
+bob = AnimalCreator.create_animal('hyena')
 
 print(bob)
 
-breeds = ['retriever', 'doberman', 'pug']
-likes_cats = [True, True, False]
-weights = [25, 30, 8]
-hungers = [8, 5, 5]
-moods = [0.9, 0.5, 0.6]
+shelter = [AnimalCreator.create_animal('dog') for _ in range(20)]
 
-dogs = list(map(AnimalCreator.createDog, breeds, likes_cats, weights, hungers, moods))
-
-for dog in dogs: print(dog)
-
+for dog in shelter: print(dog)
 '''
