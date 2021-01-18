@@ -2,9 +2,9 @@
 I learn design patterns and place them here because why not.
 
 ### featuring:
- -simple factory
- -factory method
- -abstract factory
- -builder
- -prototype
- -singleton
+- simple factory  
+- factory method  
+- abstract factory  
+- builder  
+- prototype  
+- singleton  
