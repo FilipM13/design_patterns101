@@ -6,3 +6,4 @@ I learn design patterns and place them here because why not.
 ### -factory method
 ### -abstract factory
 ### -builder
+### -prototype
