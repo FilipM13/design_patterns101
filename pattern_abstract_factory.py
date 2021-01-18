@@ -4,10 +4,9 @@ here:
     White Factory can create White Dogs and White Cats, Black Factory can create Black Dogs and Black Cats,
     Cats and Dogs share interface of abstract class Animal
 '''
-class Animal():
+from abc import ABC, abstractmethod, abstractclassmethod
 
-  def __init__(self):
-    pass
+class Animal(ABC):
 
   def __repr__(self):
     answer = []
@@ -59,9 +58,9 @@ class BlackDog(Dog):
     self.colour = 'black'
 
 
-class Factory():
+class Factory(ABC):
 
-  @classmethod
+  @abstractclassmethod
   def create(cls):
     pass
 
@@ -87,10 +86,10 @@ class BlackFactory(Factory):
 
 '''#uncomment for demonstration
 
-whitecat = WhiteCatFactory.create()
-blackcat = BlackCatFactory.create()
-whitedog = WhiteDogFactory.create()
-blackdog = BlackDogFactory.create()
+whitecat = WhiteFactory.create_white_cat()
+blackcat = BlackFactory.create_black_cat()
+whitedog = WhiteFactory.create_white_dog()
+blackdog = BlackFactory.create_black_dog()
 
 print(whitedog)
 '''
