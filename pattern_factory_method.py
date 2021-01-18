@@ -4,14 +4,15 @@ In this case common lagic for different Creator classes is .speak() and .grow_fu
 Every class can add it's own logic and returns different type of object.
 Returned objects must inherit from same base class (here: Dog, Cat, Worm and Hyena inherit from Animal class).
 '''
+from abc import ABC, abstractmethod, abstractclassmethod
 
-class Animal():
+class Animal(ABC):
   '''
   General animal class.
   '''
 
   count = 0
-
+  @abstractmethod
   def __init__(self, weight, hunger, mood):
     Animal.count += 1
     self.weight = weight
@@ -124,12 +125,11 @@ class Hyena(Animal):
     self.can_hunt = True
 
 
-class Creator():
+class Creator(ABC):
   '''
   General creator class.
   '''
-
-  @classmethod
+  @abstractclassmethod
   def create(cls, rv):
     rv.grow_furr()
     rv.speak()

@@ -3,13 +3,15 @@ Simple factory. Creator class returns different type of object depending on inpu
 Using creator simplifies using of Animal subclasses. User doesn't know how 'animal' is created.
 Returned objects must inherit from same base class (here: Dog, Cat, Worm and Hyena inherit from Animal class).
 '''
-class Animal():
+from abc import ABC, abstractmethod, abstractclassmethod
+
+class Animal(ABC):
   '''
   General animal class.
   '''
 
   count = 0
-
+  @abstractmethod
   def __init__(self, weight, hunger, mood):
     Animal.count += 1
     self.weight = weight
