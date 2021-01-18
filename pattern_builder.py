@@ -10,6 +10,7 @@ director - Director:
     - builds sport suv - combines SportBuilder and SuvBuilder
     - builds semi offroad - combines TerrainBuilder, SuvBuilder, Builder
 '''
+from abc import ABC, abstractclassmethod
 
 class Car():
 
@@ -23,7 +24,25 @@ class Car():
       answer.append(f'{i}: {self.__dict__[i]}')
     return '\n'.join(answer)
 
-class Builder():
+class IBuilder(ABC):
+
+  @abstractclassmethod
+  def set_wheels(cls, obj: Car):
+    pass
+
+  @abstractclassmethod
+  def set_suspension(cls, obj: Car):
+    pass
+
+  @abstractclassmethod
+  def set_horse_power(cls, obj: Car):
+    pass
+
+  @abstractclassmethod
+  def set_engine_cc(cls, obj: Car):
+    pass
+
+class Builder(IBuilder):
 
   @classmethod
   def set_wheels(cls, obj: Car):
@@ -41,7 +60,7 @@ class Builder():
   def set_engine_cc(cls, obj: Car):
     obj.engine = 1200
 
-class SportBuilder(Builder):
+class SportBuilder(IBuilder):
 
   @classmethod
   def set_wheels(cls, obj: Car):
@@ -59,7 +78,7 @@ class SportBuilder(Builder):
   def set_engine_cc(cls, obj: Car):
     obj.engine = 2000
 
-class TerrainBuilder(Builder):
+class TerrainBuilder(IBuilder):
 
   @classmethod
   def set_wheels(cls, obj: Car):
@@ -77,7 +96,7 @@ class TerrainBuilder(Builder):
   def set_engine_cc(cls, obj: Car):
     obj.engine = 3000
 
-class SuvBuilder(Builder):
+class SuvBuilder(IBuilder):
 
   @classmethod
   def set_wheels(cls, obj: Car):
