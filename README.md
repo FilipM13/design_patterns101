@@ -8,4 +8,5 @@ I learn design patterns and place them here because why not.
 - builder  
 - prototype  
 - singleton  
-- adapter
+- adapter  
+- decorator
