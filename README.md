@@ -10,4 +10,5 @@ I learn design patterns and place them here because why not.
 - singleton  
 - adapter  
 - decorator  
-- proxy
+- proxy  
+- facade
