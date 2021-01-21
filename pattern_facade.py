@@ -1,11 +1,11 @@
 '''
-Facade. Structure that simplifies a complex interface.
+Facade. Structure that uses simple interface to manage complex behavior.
 Thanks to facade a client doeasn't have to understand complicated logic of a process.
 here:
   Product,
   ProductDesign,
   Facory,
-  PackingArea - classes interacting with eachother that use many methods
+  PackingArea - classes interacting with eachother and use many methods
   CustomerService - facade class calling all methods to create final result
 '''
 from abc import ABC, abstractmethod, abstractclassmethod
