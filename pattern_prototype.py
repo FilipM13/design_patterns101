@@ -1,5 +1,7 @@
 '''
-
+Prototype. Pattern which goal is to copy existing object without knoledge about how it's created.
+here:
+  clone method - creates copies of self (implementation of prototype pattern)
 '''
 
 import copy
@@ -24,6 +26,9 @@ class CarPrototype(Prototype):
       answer.append(f'{i}: {self.__dict__[i]}')
     return '\n'.join(answer)
 
+
+'''#uncomment for demonstration
+
 c = CarPrototype()
 c.speed = 100
 c.weight = 1200
@@ -34,3 +39,5 @@ d = c.clone()
 
 print(d)
 print(c)
+
+'''

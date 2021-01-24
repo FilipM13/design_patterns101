@@ -21,7 +21,6 @@ class Service(ABC):
   def add(self):
     pass
 
-
 class BankAccount(Service):
   '''
   Accual service object.
@@ -44,7 +43,6 @@ class BankAccount(Service):
     if self.dept < 0:
       self.money += self.dept
       self.dept = 0
-
 
 class Card(Service):
   '''

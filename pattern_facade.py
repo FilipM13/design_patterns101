@@ -39,7 +39,6 @@ class Product():
       answer.append(f'{i}: {self.__dict__[i]}')
     return '\n'.join(answer)
 
-
 class ProductDesign():
 
   @classmethod
@@ -52,13 +51,11 @@ class ProductDesign():
     thing.increase_price(money)
     thing.style = style
 
-
 class Factory():
 
   @classmethod
   def craft(self, original_product: Product, number_of_copies):
     return [copy(original_product) for _ in range(number_of_copies)]
-
 
 class PackingArea():
 
@@ -67,7 +64,6 @@ class PackingArea():
     for num, ob in enumerate(list_of_products):
       list_of_products[num].price += money
     return list_of_products
-
 
 class CustomerService():
 
