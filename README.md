@@ -11,4 +11,5 @@ I learn design patterns and place them here because why not.
 - adapter  
 - decorator  
 - proxy  
-- facade
+- facade  
+- bridge
