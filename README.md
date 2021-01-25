@@ -12,4 +12,5 @@ I learn design patterns and place them here because why not.
 - decorator  
 - proxy  
 - facade  
-- bridge
+- bridge  
+- composite
