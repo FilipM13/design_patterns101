@@ -13,4 +13,5 @@ I learn design patterns and place them here because why not.
 - proxy  
 - facade  
 - bridge  
-- composite
+- composite  
+- flyweight
