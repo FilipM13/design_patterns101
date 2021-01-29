@@ -2,16 +2,19 @@
 I learn design patterns and place them here because why not.
 
 ### featuring:
+#### creational patterns:  
 - simple factory  
 - factory method  
 - abstract factory  
 - builder  
 - prototype  
-- singleton  
+- singleton 
+#### structural patterns:  
 - adapter  
 - decorator  
 - proxy  
 - facade  
 - bridge  
 - composite  
-- flyweight
+- flyweight  
+#### behavioral patterns:  
