@@ -18,3 +18,4 @@ I learn design patterns and place them here because why not.
 - composite  
 - flyweight  
 #### behavioral patterns:  
+- template
