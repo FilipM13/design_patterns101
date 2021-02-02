@@ -1,14 +1,14 @@
-# design_patterns101
-I learn design patterns and place them here because why not.
+# design_patterns101  
+I learn design patterns and place them here because why not.  
 
-### featuring:
+### featuring:  
 #### creational patterns:  
 - simple factory  
 - factory method  
 - abstract factory  
 - builder  
 - prototype  
-- singleton 
+- singleton  
 #### structural patterns:  
 - adapter  
 - decorator  
@@ -18,4 +18,5 @@ I learn design patterns and place them here because why not.
 - composite  
 - flyweight  
 #### behavioral patterns:  
-- template
+- template  
+- observer  
