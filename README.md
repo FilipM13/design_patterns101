@@ -20,3 +20,4 @@ I learn design patterns and place them here because why not.
 #### behavioral patterns:  
 - template  
 - observer  
+- memento  
