@@ -21,4 +21,5 @@ I learn design patterns and place them here because why not.
 - template  
 - observer  
 - memento  
-- chain of responsibility
+- chain of responsibility  
+- visitor  
