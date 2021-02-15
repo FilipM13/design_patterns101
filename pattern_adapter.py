@@ -5,7 +5,6 @@ here:
   less_to_ful_adapter - adapter that allows client to perform UsefulBox methods on UselessBox
   UselessBox - client-side unavailable interface
 '''
-from abc import ABC, abstractmethod
 
 class UsefulBox():
 

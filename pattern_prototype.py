@@ -1,8 +1,8 @@
-'''
-Prototype. Pattern which goal is to copy existing object without knoledge about how it's created.
+"""
+Prototype. Pattern which goal is to copy existing object without knowledge about how it's created.
 here:
   clone method - creates copies of self (implementation of prototype pattern)
-'''
+"""
 
 import copy
 from abc import ABC, abstractmethod
@@ -13,9 +13,6 @@ class Prototype(ABC):
     pass
 
 class CarPrototype(Prototype):
-  '''
-
-  '''  
   def clone(self):
     return copy.copy(self)
     

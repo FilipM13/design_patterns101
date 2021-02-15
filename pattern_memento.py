@@ -1,11 +1,11 @@
-'''
+"""
 Memento. Pattern that allows saving state of object. Later this state can be recovered.
 here:
   document - object that can be midified
   memento - class of states
-'''
+"""
 
-class Memento():
+class Memento:
 
   def __init__(self, doc):
     self.text = doc.text
@@ -15,7 +15,7 @@ class Memento():
   def recover(self):
     return self.__dict__
 
-class Document():
+class Document:
 
   def __init__(self, text, font, size):
     self.text = text

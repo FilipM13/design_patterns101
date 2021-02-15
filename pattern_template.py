@@ -1,15 +1,15 @@
-'''
+"""
 Template. Allows defining main logic in superclass and override it in subclasses that share common parts.
 here:
   Animal - main class for basic logic
   Dog, Cat, worm, Hyena - subclasses that inherit main logic from Animal class for further use or modification
-'''
-from abc import ABC, abstractclassmethod, abstractmethod
+"""
+from abc import ABC, abstractmethod
 
 class Animal(ABC):
-  '''
+  """
   General animal class.
-  '''
+  """
 
   count = 0
   @abstractmethod
@@ -42,9 +42,9 @@ class Animal(ABC):
     return '\n'.join(answer)
 
 class Dog(Animal):
-  '''
+  """
   Class for creating dogs. Inherits from Animal class.
-  '''
+  """
 
   count = 0
 
@@ -58,9 +58,9 @@ class Dog(Animal):
     print('WOOF')
   
 class Cat(Animal):
-  '''
+  """
   Class for creating cats. Inherits from Animal class.
-  '''
+  """
 
   count = 0
 

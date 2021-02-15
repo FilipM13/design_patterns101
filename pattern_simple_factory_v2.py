@@ -1,14 +1,14 @@
-'''
+"""
 Simple factory. Creator class returns different type of object depending on input.
 Using creator simplifies using of Animal subclasses. User doesn't know how 'animal' is created.
 Returned objects must inherit from same base class (here: Dog, Cat, Worm and Hyena inherit from Animal class).
-'''
-from abc import ABC, abstractmethod, abstractclassmethod
+"""
+from abc import ABC, abstractmethod
 
 class Animal(ABC):
-  '''
+  """
   General animal class.
-  '''
+  """
 
   count = 0
   @abstractmethod
@@ -41,9 +41,9 @@ class Animal(ABC):
     return '\n'.join(answer)
 
 class Dog(Animal):
-  '''
+  """
   Class for creating dogs. Inherits from Animal class.
-  '''
+  """
 
   count = 0
 
@@ -57,9 +57,9 @@ class Dog(Animal):
     print('WOOF')
   
 class Cat(Animal):
-  '''
+  """
   Class for creating cats. Inherits from Animal class.
-  '''
+  """
 
   count = 0
 
@@ -110,10 +110,10 @@ class Hyena(Animal):
   def speak(self):
     print('XDXDXDXDXD')
 
-class AnimalCreator():
-  '''
+class AnimalCreator:
+  """
   Simple factory for creating Animals.
-  '''
+  """
 
   @classmethod
   def create_animal(cls, a_type):

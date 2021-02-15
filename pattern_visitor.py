@@ -1,11 +1,11 @@
-'''
+"""
 Visitor. Separates behavior from object itself.
 here:
-  Box, 
+  Box,
   Sphere - objects with similarities (shape)
   VolumeVisitor,
   AreaVisitor - visitors that perform action on objects
-'''
+"""
 from abc import ABC, abstractmethod
 from math import pi
 

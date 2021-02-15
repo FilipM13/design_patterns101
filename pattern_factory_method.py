@@ -131,7 +131,7 @@ class Creator(ABC):
   '''
   @abstractclassmethod
   def create(cls, rv):
-    rv.grow_furr()
+    rv.grow_fur()
     rv.speak()
     pass
 

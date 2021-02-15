@@ -1,12 +1,11 @@
-'''
+"""
 Observer. Pattern that allows notifying other objects about taken action.
 here:
   Subscriber - class which instances are to be notified
   Channel - class which instances are to notify Subscribers
-'''
-from abc import ABC, abstractmethod, abstractclassmethod
+"""
 
-class Subscriber():
+class Subscriber:
 
   def __init__(self, name):
     self.name = name
@@ -18,7 +17,7 @@ class Subscriber():
     print(f'I, {self.name}, subscribed to {n.name}.')
     n.add_subscriber(self)
 
-class Channel():
+class Channel:
 
   def __init__(self, name):
     self.name = name

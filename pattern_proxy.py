@@ -1,17 +1,17 @@
-'''
+"""
 Proxy. Structure that hides actions from client. Proxy and original object share the same interface.
 Proxy allows performing actions on original object when it's unavailable.
 here:
   Service - common interface
   BankAccount - service target object
   Card - proxy for BankAccount providing extra feature of access check
-'''
-from abc import ABC, abstractmethod, abstractclassmethod
+"""
+from abc import ABC
 
 class Service(ABC):
-  '''
+  """
   Interface.
-  '''
+  """
   def __init__(self):
     pass
 
@@ -22,9 +22,9 @@ class Service(ABC):
     pass
 
 class BankAccount(Service):
-  '''
-  Accual service object.
-  '''
+  """
+  Actual service object.
+  """
   def __init__(self, account_number, money, dept, pin, available):
     self.pin = pin
     self.account_number = account_number
@@ -45,9 +45,9 @@ class BankAccount(Service):
       self.dept = 0
 
 class Card(Service):
-  '''
+  """
   BankAccount proxy.
-  '''
+  """
   def __init__(self, account):
     self.account = account
 

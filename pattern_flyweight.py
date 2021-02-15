@@ -1,14 +1,14 @@
-'''
-Flyweight. Helps saving RAM space by deviding object into inttrinsic and extrinsic parts. Shared/common parts of many objects are stored as one variable.
+"""
+Flyweight. Helps saving RAM space by deciding object into intrinsic and extrinsic parts. Shared/common parts of many objects are stored as one variable.
 example:
 we can have many red Ford Mustangs so we store it in variable
 anytime someone asks for red Ford Mustang same variable is returned
 here:
   Car - class with intrinsic and extrinsic properties
   Flyweights - class managing intrinsic properties
-'''
+"""
 
-class Car():
+class Car:
 
   def __init__(self, common_state: str):
     self.common_state = common_state
@@ -19,7 +19,7 @@ class Car():
     print(f'Plates of this car are {plates}.')
 
 
-class Flyweights():
+class Flyweights:
 
   car_families: dict[str, Car] = {}
 
@@ -28,7 +28,7 @@ class Flyweights():
     return '_'.join([str(state[i]) for i in sorted(state)])
 
   @classmethod
-  def add_car_families(self, states: list):
+  def add_car_families(cls, states: list):
     for state in states:
       k = Flyweights.create_key(state)
       Flyweights.car_families[k] = Car(k)
@@ -79,6 +79,6 @@ print('\nFamilies after getting nonexisting family:')
 Flyweights.list_car_families()
 
 print('\nGetting car family and performing action on it:')
-tunning_car = Flyweights.get_car_family({'manufacturer':'Toyota', 'color':'white', 'model':'Supra'})
-tunning_car.operation('Joe Swansonson', 'SPEED1')
+tuning_car = Flyweights.get_car_family({'manufacturer':'Toyota', 'color':'white', 'model':'Supra'})
+tuning_car.operation('Joe Swansonson', 'SPEED1')
 '''

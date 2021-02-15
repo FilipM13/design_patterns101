@@ -1,12 +1,12 @@
-'''
+"""
 Singleton. This pattern allows global access to one instance.
 This version of Singleton prevents creating more than 1 instance of a class.
-here: 
+here:
     Database - Singleton
     users - ways to access Database
-'''
+"""
 
-class Database():
+class Database:
   instance = None
 
   def __new__(cls):

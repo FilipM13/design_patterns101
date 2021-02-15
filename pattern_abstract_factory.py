@@ -1,10 +1,10 @@
-'''
+"""
 Abstract Factory pattern. Allows creating famillies of related products that share common interface.
-here: 
+here:
     White Factory can create White Dogs and White Cats, Black Factory can create Black Dogs and Black Cats,
     Cats and Dogs share interface of abstract class Animal
-'''
-from abc import ABC, abstractmethod, abstractclassmethod
+"""
+from abc import ABC, abstractclassmethod
 
 class Animal(ABC):
 
