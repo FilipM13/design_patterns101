@@ -1,7 +1,7 @@
 """
 Memento. Pattern that allows saving state of object. Later this state can be recovered.
 here:
-  document - object that can be midified
+  document - object that can be modified
   memento - class of states
 """
 
