@@ -4,7 +4,7 @@ here:
   Tree (and subclasses) - structure (based on composite pattern)
   TreeIterator - class allowing to iterate through Tree structure
 """
-from abc import ABC, abstractmethod
+from abc import ABC
 
 class Tree(ABC):
   pass
@@ -36,7 +36,7 @@ class Leaf(Tree):
 
 class TreeIterator(ABC):
 
-  def __init__(self, tree: Tree):
+  def __init__(self, tree: Branch):
     self.tree = tree
     pass
 
