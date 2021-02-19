@@ -24,4 +24,5 @@ I learn design patterns and place them here because why not.
 - chain of responsibility  
 - visitor  
 - command  
-- iterator
+- iterator  
+- mediator
