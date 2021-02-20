@@ -1,15 +1,15 @@
-'''
+"""
 Factory method. Specific Creator classes inherit from general Creator classes to maintain it's logic but return different type of object.
-In this case common lagic for different Creator classes is .speak() and .grow_furr().
+In this case common logic for different Creator classes is .speak() and .grow_fur().
 Every class can add it's own logic and returns different type of object.
 Returned objects must inherit from same base class (here: Dog, Cat, Worm and Hyena inherit from Animal class).
-'''
-from abc import ABC, abstractmethod, abstractclassmethod
+"""
+from abc import ABC, abstractmethod
 
 class Animal(ABC):
-  '''
+  """
   General animal class.
-  '''
+  """
 
   count = 0
   @abstractmethod
@@ -22,7 +22,7 @@ class Animal(ABC):
   def speak(self):
     print('>general animal sound<')
 
-  def feed(self):
+  def feed(self, *args):
     if self.hunger == 0:
       print('I\'m not hungry.')
     else:
@@ -31,21 +31,21 @@ class Animal(ABC):
         self.hunger = 0
       print('Nice food.')
 
-  def grow_furr(self):
-    print(self.__class__.__name__, 'has furr now.')
+  def grow_fur(self):
+    print(self.__class__.__name__, 'has fur now.')
     self.weight += 0.5
 
   def __repr__(self):
-    answer = []
+    answer = list()
     answer.append(self.__class__.__name__)
     for i in self.__dict__.keys():
       answer.append(f'{i}: {self.__dict__[i]}')
     return '\n'.join(answer)
 
 class Dog(Animal):
-  '''
+  """
   Class for creating dogs. Inherits from Animal class.
-  '''
+  """
 
   count = 0
 
@@ -53,6 +53,7 @@ class Dog(Animal):
     super().__init__(weight, hunger, mood)
     self.breed = breed
     self.likes_cats = likes_cats
+    self.can_bite = bool()
     Dog.count += 1
 
   def speak(self):
@@ -63,9 +64,9 @@ class Dog(Animal):
     self.can_bite = True
   
 class Cat(Animal):
-  '''
+  """
   Class for creating cats. Inherits from Animal class.
-  '''
+  """
 
   count = 0
 
@@ -73,6 +74,7 @@ class Cat(Animal):
     super().__init__(weight, hunger, mood)
     self.breed = breed
     self.likes_dogs = likes_dogs
+    self.can_scratch = bool()
     Cat.count += 1
 
   def speak(self):
@@ -103,9 +105,9 @@ class Worm(Animal):
   def speak(self):
     print('I\'m not much of a talker.')
 
-  def grow_furr(self):
-    super().grow_furr()
-    print('I am worm, I dont want furr.')
+  def grow_fur(self):
+    super().grow_fur()
+    print('I am worm, I don\'t want fur.')
     self.weight -= 0.5
     self.weight = round(self.weight, 2)
 
@@ -115,6 +117,7 @@ class Hyena(Animal):
 
   def __init__(self, weight, hunger, mood):
     super().__init__(weight, hunger, mood)
+    self.can_hunt = bool()
     Hyena.count += 1
 
   def speak(self):
@@ -126,19 +129,20 @@ class Hyena(Animal):
 
 
 class Creator(ABC):
-  '''
+  """
   General creator class.
-  '''
-  @abstractclassmethod
+  """
+  @classmethod
+  @abstractmethod
   def create(cls, rv):
     rv.grow_fur()
     rv.speak()
     pass
 
 class DogCreator(Creator):
-  '''
+  """
   Dog creator class.
-  '''
+  """
 
   @classmethod
   def create(cls):
@@ -150,9 +154,9 @@ class DogCreator(Creator):
     return rv
 
 class CatCreator(Creator):
-  '''
+  """
   Cat creator class.
-  '''
+  """
 
   @classmethod
   def create(cls):
@@ -164,22 +168,22 @@ class CatCreator(Creator):
     return rv
 
 class WormCreator(Creator):
-  '''
+  """
   Cat creator class.
-  '''
+  """
 
   @classmethod
   def create(cls):
-    rv = Worm('leafs', weight=0.1, hunger=5, mood=0.5)
+    rv = Worm('leaves', weight=0.1, hunger=5, mood=0.5)
     print('Worm created.')
-    rv.feed('leafs')
+    rv.feed('leaves')
     super().create(rv)
     return rv
 
 class HyenaCreator(Creator):
-  '''
-  Cat creator class.
-  '''
+  """
+  Hyena creator class.
+  """
 
   @classmethod
   def create(cls):
@@ -191,7 +195,6 @@ class HyenaCreator(Creator):
     return rv
 
 '''#uncomment for demonstration
-
 doge = DogCreator.create()
 print()
 cate = CatCreator.create()

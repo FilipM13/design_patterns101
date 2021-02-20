@@ -1,14 +1,14 @@
-'''
-Chain of responsibility. Pattern that allows passing one request along many linked objects (handlers). 
+"""
+Chain of responsibility. Pattern that allows passing one request along many linked objects (handlers).
 Each handler decides if it should pass it to the next handler or do something else.
 here:
   BaseHandler - abstract class for every chain link, with implementation for initialization and operations
-  AuthorizHandler,
-  ConfirmeHandler,
+  AuthorizeHandler,
+  ConfirmHandler,
   VerifyHandler,
   BossHandler,
   ReturnHandler - chain links inheriting from BaseHandler
-'''
+"""
 from abc import ABC, abstractmethod
 
 class BaseHandler(ABC):
@@ -30,7 +30,7 @@ class AuthorizeHandler(BaseHandler):
     super().__init__(next_handler)
 
   def task(self, *args, **kwargs):
-    if kwargs['authorized'] == True and self.next_handler != None:
+    if kwargs['authorized'] == True and self.next_handler is not None:
       print('Authorized.')
       self.next_handler.task(*args, **kwargs)
     else:
@@ -42,7 +42,7 @@ class VerifyHandler(BaseHandler):
     super().__init__(next_handler)
 
   def task(self, *args, **kwargs):
-    if kwargs['verified'] == True and self.next_handler != None:
+    if kwargs['verified'] == True and self.next_handler is not None:
       print('Verified.')
       self.next_handler.task(*args, **kwargs)
     else:
@@ -54,7 +54,7 @@ class ConfirmHandler(BaseHandler):
     super().__init__(next_handler)
 
   def task(self, *args, **kwargs):
-    if kwargs['confirmed'] == True and self.next_handler != None:
+    if kwargs['confirmed'] == True and self.next_handler is not None:
       print('Confirmed.')
       self.next_handler.task(*args, **kwargs)
     else:
@@ -66,7 +66,7 @@ class BossHandler(BaseHandler):
     super().__init__(next_handler)
 
   def task(self, *args, **kwargs):
-    if kwargs['boss'] == True:
+    if kwargs['boss']:
       print('You da boss.')
       self.next_handler.task(*args, **kwargs)
     else:
@@ -82,7 +82,6 @@ class ReturnHandler(BaseHandler):
 
 
 '''#uncomment for demonstration
-
 a = AuthorizeHandler()
 v = VerifyHandler()
 c = ConfirmHandler()
@@ -96,5 +95,4 @@ b.set_handler(r)
 
 a.task(verified=True, authorized=True, confirmed=True)
 b.task(boss=True)
-
 '''

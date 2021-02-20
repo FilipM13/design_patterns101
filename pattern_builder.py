@@ -1,7 +1,7 @@
-'''
-Builders and Director. For creating many differat versions of the same object we ecstract their atributes from base class.
-We create Builder classes that sets different values to these atributes.
-To automate creating object where different Builders are required we create Director class 
+"""
+Builders and Director. For creating many different versions of the same object we extract their attributes from base class.
+We create Builder classes that sets different values to these attributes.
+To automate creating object where different Builders are required we create Director class
 where each method uses different Builders and returns complete object.
 here:
 object - Car
@@ -9,36 +9,36 @@ builders - Builder, SportBuilder, TerrainBuilder, SuvBuilder
 director - Director:
     - builds sport suv - combines SportBuilder and SuvBuilder
     - builds semi offroad - combines TerrainBuilder, SuvBuilder, Builder
-'''
-from abc import ABC, abstractclassmethod
+"""
+from abc import ABC, abstractmethod
 
-class Car():
+class Car:
 
   def __init__(self, name):
     self.name = name
   
   def __repr__(self):
-    answer = []
+    answer = list()
     answer.append(self.__class__.__name__)
     for i in self.__dict__.keys():
       answer.append(f'{i}: {self.__dict__[i]}')
     return '\n'.join(answer)
 
 class IBuilder(ABC):
-
-  @abstractclassmethod
+  @classmethod
+  @abstractmethod
   def set_wheels(cls, obj: Car):
     pass
-
-  @abstractclassmethod
+  @classmethod
+  @abstractmethod
   def set_suspension(cls, obj: Car):
     pass
-
-  @abstractclassmethod
+  @classmethod
+  @abstractmethod
   def set_horse_power(cls, obj: Car):
     pass
-
-  @abstractclassmethod
+  @classmethod
+  @abstractmethod
   def set_engine_cc(cls, obj: Car):
     pass
 
@@ -115,7 +115,6 @@ class SuvBuilder(IBuilder):
     obj.engine = 1800
 
 '''#uncomment for demonstration
-
 regular = Car(name='regular car')
 Builder.set_wheels(regular)
 Builder.set_suspension(regular)
@@ -137,7 +136,7 @@ TerrainBuilder.set_horse_power(buggy)
 TerrainBuilder.set_engine_cc(buggy)
 print(buggy)
 
-big_boy = Car(name='important bussinessman')
+big_boy = Car(name='important businessman')
 SuvBuilder.set_suspension(big_boy)
 SuvBuilder.set_wheels(big_boy)
 SuvBuilder.set_horse_power(big_boy)
@@ -145,7 +144,7 @@ SuvBuilder.set_engine_cc(big_boy)
 print(big_boy)
 '''
 
-class Director():
+class Director:
 
   @classmethod
   def make_sport_suv(cls, name):
@@ -166,8 +165,7 @@ class Director():
     return rv
 
 '''#uncomment for demonstration
-
-sport_suv = Director.make_sport_suv('fast important bussinessman')
+sport_suv = Director.make_sport_suv('fast important businessman')
 print(sport_suv)
 
 city_jeep = Director.make_semi_offroad('suburb citizen')

@@ -1,31 +1,31 @@
-'''
+"""
 Adapter or wrapper. Allows 2 objects with different interfaces to interact with each other.
 here:
   UsefulBox - client-side available interface
   less_to_ful_adapter - adapter that allows client to perform UsefulBox methods on UselessBox
   UselessBox - client-side unavailable interface
-'''
+"""
 
-class UsefulBox():
+class UsefulBox:
 
-  def __init__(self, color: str, material: str, X: int, Y: int, Z: int):
+  def __init__(self, color: str, material: str, x: int, y: int, z: int):
     self.color = color
     self.material = material
-    self.X = X
-    self.Y = Y
-    self.Z = Z
+    self.X = x
+    self.Y = y
+    self.Z = z
 
   def get_volume(self):
     return self.X * self.Y * self.Z
     
   def __repr__(self):
-    rv = []
+    rv = list()
     rv.append(str(self.__class__.__name__))
     for i in self.__dict__.keys():
       rv.append(f'{i} : {self.__dict__[i]}')
     return '\n'.join(rv)
 
-class UselessBox():
+class UselessBox:
 
   def __init__(self, properties: dict, width: int, height: int, depth: int):
     self.properties = properties
@@ -37,13 +37,13 @@ class UselessBox():
     return self.width * self.height * self.depth
 
   def __repr__(self):
-    rv = []
+    rv = list()
     rv.append(str(self.__class__.__name__))
     for i in self.__dict__.keys():
       rv.append(f'{i} : {self.__dict__[i]}')
     return '\n'.join(rv)
 
-class LessToFulAdapter(UsefulBox):
+class LessToFulAdapter:
 
   def __init__(self, useless_box):
     self.instance = useless_box

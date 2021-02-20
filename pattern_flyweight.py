@@ -40,16 +40,16 @@ class Flyweights:
 
   @classmethod
   def get_car_family(cls, state: dict):
-    try:
-      k = Flyweights.create_key(state)
-      return Flyweights.car_families[k]
-    except KeyError:
-      Flyweights.add_car_families([state])
-      return Flyweights.car_families[k]
+    for k in state.keys():
+      try:
+        k = Flyweights.create_key(state)
+        return Flyweights.car_families[k]
+      except KeyError:
+        Flyweights.add_car_families([state])
+        return Flyweights.car_families[k]
 
 
 '''#uncomment for demonstration
-
 Flyweights.add_car_families([
   {'manufacturer':'Ford', 'model':'Mustang', 'color':'red'},
   {'manufacturer':'Dodge', 'model':'Charger', 'color':'black'},

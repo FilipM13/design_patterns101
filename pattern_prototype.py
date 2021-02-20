@@ -9,15 +9,16 @@ from abc import ABC, abstractmethod
 
 class Prototype(ABC):
   @abstractmethod
-  def clone(self, target):
+  def clone(self):
     pass
 
 class CarPrototype(Prototype):
+
   def clone(self):
     return copy.copy(self)
     
   def __repr__(self):
-    answer = []
+    answer = list()
     answer.append(self.__class__.__name__)
     for i in self.__dict__.keys():
       answer.append(f'{i}: {self.__dict__[i]}')

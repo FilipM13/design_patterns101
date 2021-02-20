@@ -86,13 +86,13 @@ class DoubleMediator(Mediator):
     if request == 'a':
       print('Starting generating:')
       rv = self.component1.func(5)
-      print('Genereting finished.')
+      print('Generating finished.')
       return rv
     elif request == 'xy':
       print('Starting generating:')
       n = self.component2.func()
       rv = self.component1.func(n)
-      print('Genereting finished.')
+      print('Generating finished.')
       return rv
 
 

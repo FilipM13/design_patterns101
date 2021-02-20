@@ -22,7 +22,7 @@ class Animal(ABC):
   def speak(self):
     print('>general animal sound<')
 
-  def feed(self):
+  def feed(self, *args):
     if self.hunger == 0:
       print('I\'m not hungry.')
     else:
@@ -31,11 +31,11 @@ class Animal(ABC):
         self.hunger = 0
       print('Nice food.')
 
-  def grow_furr(self):
+  def grow_fur(self):
     self.weight += 0.5
 
   def __repr__(self):
-    answer = []
+    answer = list()
     answer.append(self.__class__.__name__)
     for i in self.__dict__.keys():
       answer.append(f'{i}: {self.__dict__[i]}')
@@ -94,9 +94,9 @@ class Worm(Animal):
   def speak(self):
     print('I\'m not much of a talker.')
 
-  def grow_furr(self):
-    super().grow_furr()
-    print('I am worm, I dont want furr.')
+  def grow_fur(self):
+    super().grow_fur()
+    print('I am worm, I don\'t want fur.')
     self.weight -= 0.5
     self.weight = round(self.weight, 2)
 
@@ -114,13 +114,13 @@ class Hyena(Animal):
 
 '''#uncomment for demonstration
 
-Baster = Dog('rotweiler', False, 30, 0.5, 0.5)
-Baster.grow_furr()
+Baster = Dog('rottweiler', False, 30, 0.5, 0.5)
+Baster.grow_fur()
 Baster.speak()
 print(Baster, '\n')
 
 Luna = Cat('Persian', False, 5, 0.6, 0.3)
-Luna.grow_furr()
+Luna.grow_fur()
 Luna.speak()
 print(Luna)
 '''

@@ -21,7 +21,7 @@ class Animal(ABC):
   def speak(self):
     print('>general animal sound<')
 
-  def feed(self):
+  def feed(self, *args):
     if self.hunger == 0:
       print('I\'m not hungry.')
     else:
@@ -30,11 +30,11 @@ class Animal(ABC):
         self.hunger = 0
       print('Nice food.')
 
-  def grow_furr(self):
+  def grow_fur(self):
     self.weight += 0.5
 
   def __repr__(self):
-    answer = []
+    answer = list()
     answer.append(self.__class__.__name__)
     for i in self.__dict__.keys():
       answer.append(f'{i}: {self.__dict__[i]}')
@@ -93,9 +93,9 @@ class Worm(Animal):
   def speak(self):
     print('I\'m not much of a talker.')
 
-  def grow_furr(self):
-    super().grow_furr()
-    print('I am worm, I dont want furr.')
+  def grow_fur(self):
+    super().grow_fur()
+    print('I am worm, I don\'t want fur.')
     self.weight -= 0.5
     self.weight = round(self.weight, 2)
 
@@ -117,17 +117,18 @@ class AnimalCreator:
 
   @classmethod
   def create_animal(cls, a_type):
+    rv = None
     
     if a_type == 'dog':
       rv = Dog(breed='retriever', likes_cats=False, weight=25, hunger=8, mood=0.9)
     elif a_type == 'cat':
       rv = Cat('persian', likes_dogs=False, weight=3, hunger=5, mood=0.5)
     elif a_type == 'worm':
-      rv = Worm(food='leafs', weight=0.1, hunger=5, mood=5)
+      rv = Worm(food='leaves', weight=0.1, hunger=5, mood=5)
     elif a_type == 'hyena':
       rv = Hyena(weight=35, hunger=7, mood=5)
     
-    rv.grow_furr()
+    rv.grow_fur()
     rv.speak()
     return rv
 

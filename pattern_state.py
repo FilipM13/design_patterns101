@@ -28,7 +28,7 @@ class Document:
   def state(self, new):
     if new not in ['creation', 'verification', 'published']:
       print('Incorrect new state.')
-    elif self._state == 'published' and new == 'verfication':
+    elif self._state == 'published' and new == 'verification':
       print('Can\'t change state to verification')
     else:
       print(f'State changed from {self._state} to {new}.')

@@ -1,13 +1,13 @@
-'''
+"""
 Command. Allows passing request as an object to commands.
 here:
   Receiver - request object
   Command, Print, Verification - command classes that can execute a method
   Invoker - command caller
-'''
-from abc import ABC, abstractmethod, abstractclassmethod
+"""
+from abc import ABC, abstractmethod
 
-class Receiver():
+class Receiver:
 
   def __init__(self, name, age):
     self.name = name
@@ -21,7 +21,7 @@ class Receiver():
     if self.age >= 18:
       print(f'{self.name} is adult.')
     else:
-      print(f'{self.name} is underaged.')
+      print(f'{self.name} is underage.')
 
 
 class Command(ABC):
@@ -45,7 +45,7 @@ class Verification(Command):
     self.receiver.verify()
 
 
-class Invoker():
+class Invoker:
 
   def __init__(self, command: Command):
     self.command = command
@@ -55,7 +55,6 @@ class Invoker():
 
 
 '''#uncomment for demonstration
-
 rec = Receiver('Adam', 21)
 
 cmd1 = Printer(rec, [2,3,9])

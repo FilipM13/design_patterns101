@@ -1,4 +1,4 @@
-'''
+"""
 Decorator. Structure that allows to expand utility of a function.
 In python functions are treated as objects therefore can be passed as arguments/parameters.
 Because of that we don't have to create class to add logic to chosen function.
@@ -6,7 +6,7 @@ here:
   calculation - function calculating stuff
   printer - decorator that prints arguments, key word arguments and result value of a given function
   useless_adds - decorator that adds useless string to result values of a given function
-'''
+"""
 
 def printer(f):
 

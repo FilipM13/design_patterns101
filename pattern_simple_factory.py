@@ -21,7 +21,7 @@ class Animal(ABC):
   def speak(self):
     print('>general animal sound<')
 
-  def feed(self):
+  def feed(self, *args):
     if self.hunger == 0:
       print('I\'m not hungry.')
     else:
@@ -34,7 +34,7 @@ class Animal(ABC):
     self.weight += 0.5
 
   def __repr__(self):
-    answer = []
+    answer = list()
     answer.append(self.__class__.__name__)
     for i in self.__dict__.keys():
       answer.append(f'{i}: {self.__dict__[i]}')

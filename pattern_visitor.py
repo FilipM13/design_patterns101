@@ -10,10 +10,7 @@ from abc import ABC, abstractmethod
 from math import pi
 
 class GeneralObject(ABC):
-
-  @abstractmethod
-  def __init__(self, *shape):
-    pass
+  pass
 
 class Box(GeneralObject):
 

@@ -38,7 +38,7 @@ print(y)  #and this
           #are the same object
 
 user_first = Database.get_instance() #gets x 
-user_first.add_atr('name', 'what')  #adds atribute 'name' to x
+user_first.add_atr('name', 'what')  #adds attribute 'name' to x
 print(user_first.name)
 print(user_first)
 

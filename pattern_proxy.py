@@ -6,19 +6,22 @@ here:
   BankAccount - service target object
   Card - proxy for BankAccount providing extra feature of access check
 """
-from abc import ABC
+from abc import ABC, abstractmethod
 
 class Service(ABC):
   """
   Interface.
   """
+  @abstractmethod
   def __init__(self):
     pass
 
-  def take(self):
+  @abstractmethod
+  def take(self, *args):
     pass
 
-  def add(self):
+  @abstractmethod
+  def add(self, *args):
     pass
 
 class BankAccount(Service):
@@ -32,14 +35,14 @@ class BankAccount(Service):
     self.dept = dept
     self.available =available
   
-  def take(self, amout):
-    self.money -= amout
+  def take(self, amount):
+    self.money -= amount
     if self.money < 0:
       self.dept -= self.money
       self.money = 0
 
-  def add(self, amout):
-    self.dept -= amout
+  def add(self, amount):
+    self.dept -= amount
     if self.dept < 0:
       self.money += self.dept
       self.dept = 0

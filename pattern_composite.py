@@ -1,4 +1,4 @@
-'''
+"""
 Composite. Pattern that allows creating tree like structures.
 here:
   We can put cars (C) into garage (G) and garage into garage.
@@ -19,8 +19,8 @@ here:
       G:
         C
         C
-'''
-from abc import ABC, abstractclassmethod, abstractmethod
+"""
+from abc import ABC, abstractmethod
 
 class Component(ABC):
 
