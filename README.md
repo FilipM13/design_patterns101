@@ -26,6 +26,7 @@ I learn design patterns and place them here because why not.
 - command  
 - iterator  
 - mediator  
-- state
+- state  
+- strategy
 #### sources:  
 https://refactoring.guru/design-patterns
