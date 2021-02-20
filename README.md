@@ -25,4 +25,7 @@ I learn design patterns and place them here because why not.
 - visitor  
 - command  
 - iterator  
-- mediator
+- mediator  
+- state
+#### sources:  
+https://refactoring.guru/design-patterns
